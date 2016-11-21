@@ -12,12 +12,12 @@
 #define _CC_FLASHER_H_
 
 #include <boost/program_options.hpp>
-#include "data/binary_file.h"
-#include "data/hex_file.h"
-#include "data/read_target.h"
-#include "data/data_section_store.h"
-#include "programmer/cc_programmer.h"
-#include "application/cc_base.h"
+#include "../data/binary_file.h"
+#include "../data/hex_file.h"
+#include "../data/read_target.h"
+#include "../data/data_section_store.h"
+#include "../programmer/cc_programmer.h"
+#include "../application/cc_base.h"
 
 class CC_Flasher : public CC_Base
 {
