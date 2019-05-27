@@ -84,7 +84,7 @@ void CC_Base::init_options(po::options_description &desc)
 
 	desc.add_options()
 		("device,d", po::value<String>(&option_device_address_),
-				"set programmer deivce usb address 'bus:device'");
+				"set programmer device usb address 'bus:device'");
 
 	desc.add_options()
 		("fast,f", "set fast debug interface speed (by default: slow)");
@@ -152,7 +152,7 @@ bool CC_Base::init_unit()
 	if (!supported)
 	{
 		std::cout << "  Target not supported" << "\n";
-		log_info("main, target not suported");
+		log_info("main, target not supported");
 		return false;
 	}
 
@@ -235,7 +235,7 @@ bool CC_Base::execute(int argc, char *argv[])
 	}
 	catch (std::runtime_error& e) // usb, file error
 	{
-		std::cout << "  Error occured";
+		std::cout << "  Error occurred";
 		if (strlen(e.what()))
 		{
 			std::cout << ": " << e.what();

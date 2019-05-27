@@ -17,7 +17,7 @@
 #include "common/common.h"
 
 //==============================================================================
-static String file_extention(const String path)
+static String file_extension(const String path)
 {
 #if BOOST_FILESYSTEM_VERSION >= 3
 	return boost::filesystem::path(path).extension().string();
@@ -81,7 +81,7 @@ void option_extract_file_info(const String &input, OptionFileInfo &file_info,
 		file_info.type = strs[1];
 	if (file_info.type.empty())
 	{
-		file_info.type = file_extention(file_info.name);
+		file_info.type = file_extension(file_info.name);
 		if (file_info.type[0] == '.')
 			file_info.type.erase(0, 1);
 	}

@@ -89,10 +89,10 @@ static void on_error(const String &context, int error)
 
 //==============================================================================
 static void on_timeout_error(const String &context, ssize_t total,
-		ssize_t transfered)
+		ssize_t transferred)
 {
 	std::stringstream ss;
-	ss << context << " timeout, transfered " << transfered << " from " << total;
+	ss << context << " timeout, transferred " << transferred << " from " << total;
 
 	throw std::runtime_error(ss.str());
 }
@@ -301,20 +301,20 @@ void USB_Device::set_configuration(uint_t configuration)
 //==============================================================================
 void USB_Device::bulk_read(uint8_t endpoint, size_t count, uint8_t data[])
 {
-	int transfered = 0;
+	int transferred = 0;
 	endpoint |= LIBUSB_ENDPOINT_IN;
 
 	ssize_t result = libusb_bulk_transfer(handle_, endpoint, data, count,
-			&transfered, timeout_);
+			&transferred, timeout_);
 
 	log_info("usb, bulk read, count %u: data: %s",
-			count, binary_to_hex(data, transfered, " ").c_str());
+			count, binary_to_hex(data, transferred, " ").c_str());
 
 	if (result < 0)
 		on_error("libusb_bulk_transfer (in)", result);
 
-	if ((int)count != transfered)
-		on_timeout_error("libusb_bulk_transfer (in)", count, transfered);
+	if ((int)count != transferred)
+		on_timeout_error("libusb_bulk_transfer (in)", count, transferred);
 }
 
 //==============================================================================
@@ -323,16 +323,16 @@ void USB_Device::bulk_write(uint8_t endpoint, size_t count, const uint8_t data[]
 	log_info("usb, bulk write, count: %u, data: %s", count,
 			binary_to_hex(data, count, " ").c_str());
 
-	int transfered = 0;
+	int transferred = 0;
 	endpoint |= LIBUSB_ENDPOINT_OUT;
 
 	ssize_t result = libusb_bulk_transfer(handle_, endpoint, const_cast<uint8_t*>(data), count,
-			&transfered, timeout_);
+			&transferred, timeout_);
 	if (result < 0)
 		on_error("libusb_bulk_transfer (out)", result);
 
-	if ((int)count != transfered)
-		on_timeout_error("libusb_bulk_transfer (out)", count, transfered);
+	if ((int)count != transferred)
+		on_timeout_error("libusb_bulk_transfer (out)", count, transferred);
 }
 
 //==============================================================================
