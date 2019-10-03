@@ -127,6 +127,9 @@ bool CC_UnitDriver::erase_page(uint_t page_offset)
 //==============================================================================
 void CC_UnitDriver::erase()
 {
+        reset(true); /* Fixes problems with erase with CC2543 - at least
+		      * for me - David Austin */
+    
 	log_info("programmer, erase");
 
 	uint8_t command[] = { 0x1C, DEBUG_COMMAND_CHIP_ERASE };
