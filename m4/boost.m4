@@ -479,7 +479,7 @@ dnl generated only once above (before we start the for loops).
            *)
             for boost_cv_rpath_link_ldflag in -Wl,-R, -Wl,-rpath,; do
               LDFLAGS="$boost_save_LDFLAGS -L$boost_ldpath $boost_cv_rpath_link_ldflag$boost_ldpath"
-              LIBS="$boost_save_LIBS $Boost_lib_LIBS"
+              LIBS="$Boost_lib_LIBS $boost_save_LIBS"
               _BOOST_AC_LINK_IFELSE([],
                 [boost_rpath_link_ldflag_found=yes
                 break],
