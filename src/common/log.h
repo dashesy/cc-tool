@@ -30,7 +30,7 @@ private:
 	FILE *file_;
 };
 
-void log_info(const String &message, ...);
+void log_info(String message, ...);
 Log &log_get();
 
 #endif // !_LOG_H_

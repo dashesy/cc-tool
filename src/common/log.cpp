@@ -53,7 +53,7 @@ void Log::add(LogLevel level, const String &message, va_list ap)
 }
 
 //==============================================================================
-void log_info(const String &message, ...)
+void log_info(String message, ...)
 {
 	va_list ap;
 	va_start(ap, message);
