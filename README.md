@@ -4,12 +4,12 @@ cc-tool provides support for Texas Instruments CC Debugger
 #### Building from source, dependencies:
 Ubuntu: libusb-1.0-0-dev, libboost-all-dev, autoconf, libtool
 Fedora: boost-devel, libusb1-devel
-Mac OS 12.5, from ports: autoconf automake libusb boost@1.79 pkgconfig libtool
+Mac OS 12.5, from ports: autoconf automake libusb boost pkgconfig libtool
 
 Regenerate Autotools files first by running `./bootstrap` script.
 
 #### User guide:
-man cc-tool
+`man cc-tool`
 
 #### Additional:
 File udev/90-cc-debugger.rules cotains udev rules changing permissions 
